@@ -1,16 +1,43 @@
 # Laravel Backend App
 
-A Dockerized Laravel 13 demo project showcasing **Redis caching**, **queue/job processing**, and **task scheduling**.
+A Dockerized Laravel 13 demo project built to showcase three core backend concepts:
+- **Redis caching** — comparing raw DB queries vs cached responses
+- **Queue/job processing** — dispatching heavy tasks to a background worker
+- **Task scheduling** — running automated commands on a recurring interval
+
+This is a learning/demo project, not a production app. There is no authentication, no API versioning and no frontend beyond the default Laravel welcome page.
 
 ## Project Structure
 
 ```
 laravel-backend-app/
-├── backend/          # Laravel 13 application
+├── backend/                  # Laravel 13 application
+│   ├── app/
+│   │   ├── Http/Controllers/
+│   │   │   ├── ProjectController.php   # /slow-projects, /fast-projects
+│   │   │   └── QueueController.php     # /without-queue, /with-queue
+│   │   ├── Jobs/
+│   │   │   └── ProcessTasks.php        # Queue job (sleep 5s + log)
+│   │   └── Console/Commands/
+│   │       └── SendTaskReminder.php    # Scheduled command (logs every 15s)
+│   ├── routes/
+│   │   ├── web.php                     # All 4 demo routes
+│   │   └── console.php                 # Scheduler definition (every 15s)
+│   ├── database/
+│   │   ├── migrations/
+│   │   │   └── 2026_06_19_204313_create_projects_table.php
+│   │   └── seeders/
+│   │       └── ProjectSeeder.php       # Seeds 100,000 projects
+│   └── .env.example                    # Pre-configured for Docker (MySQL + Redis)
 ├── docker/
-│   ├── php/          # PHP 8.3-FPM Dockerfile
-│   └── nginx/        # Nginx config
-└── docker-compose.yml
+│   ├── php/
+│   │   ├── Dockerfile                  # PHP 8.3-FPM with Laravel extensions
+│   │   └── .dockerignore
+│   └── nginx/
+│       └── default.conf                # Nginx → PHP-FPM on port 9000
+├── .env.example                        # Docker env vars (MYSQL credentials)
+├── .gitignore                          
+└── docker-compose.yml                  # All 7 services
 ```
 
 ## Services
