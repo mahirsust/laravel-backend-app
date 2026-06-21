@@ -15,15 +15,15 @@ laravel-backend-app/
 
 ## Services
 
-| Container | Role | Exposed Port |
-|---|---|---|
-| `laravel_container` | PHP-FPM app server | — |
-| `nginx_container` | Web server | http://localhost:8001 |
-| `mysql_container` | MySQL 8.0 database | 3308 |
-| `redis_container` | Redis (cache + queue) | 6380 |
-| `redisinsight_container` | RedisInsight (Redis GUI) | http://localhost:5541 |
-| `horizon_container` | Laravel Horizon (queue dashboard) | http://localhost:8001/horizon |
-| `scheduler_container` | Laravel task scheduler | — |
+| Service Name | Container | Role | Exposed Port |
+|---|---|---|---|
+| `laravel_backend` | `laravel_container` | PHP-FPM app server | — |
+| `nginx` | `nginx_container` | Web server | http://localhost:8001 |
+| `mysql` | `mysql_container` | MySQL 8.0 database | 3308 |
+| `redis` | `redis_container` | Redis (cache + queue) | 6380 |
+| `redisinsight` | `redisinsight_container` | RedisInsight (Redis GUI) | http://localhost:5541 |
+| `horizon` | `horizon_container` | Laravel Horizon (queue dashboard) | http://localhost:8001/horizon |
+| `scheduler` | `scheduler_container` | Laravel task scheduler | — |
 
 ## Quick Start
 
