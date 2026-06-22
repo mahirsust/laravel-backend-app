@@ -5,8 +5,6 @@ A Dockerized Laravel 13 demo project built to showcase three core backend concep
 - **Queue/job processing** — dispatching heavy tasks to a background worker
 - **Task scheduling** — running automated commands on a recurring interval
 
-This is a learning/demo project, not a production app. There is no authentication, no API versioning and no frontend beyond the default Laravel welcome page.
-
 ## Project Structure
 
 ```
